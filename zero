@@ -17,6 +17,9 @@ echo "[STAT] Tor Proxy: $(systemctl status tor.service |grep Active)"
 echo "[STAT] Zeronet D: $(systemctl status zeronet.service |grep Active)"
 echo ""
 
+echo "[INFO] Call http://127.0.0.1:43110 in your Tor Browser!"
+echo ""
+
 echo "[INFO] Established connection to the Zeronet"
 read -n 1 -s -p "[INFO] Press any key to terminate connection!"
 echo ""
