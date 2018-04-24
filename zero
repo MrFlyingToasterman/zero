@@ -1,0 +1,42 @@
+#!/bin/bash
+clear
+echo "[INFO] Connecting to Zeronet ..."
+echo "[INFO] Start Tor proxy ..."
+systemctl start tor.service
+echo "[ OK ] Tor proxy started!"
+echo ""
+
+echo "[INFO] Start Zeronet daemon ..."
+systemctl start zeronet.service
+echo "[ OK ] Zeronet daemon started!"
+echo ""
+
+echo "[INFO] Generate status report ..."
+echo ""
+echo "[STAT] Tor Proxy: $(systemctl status tor.service |grep Active)"
+echo "[STAT] Zeronet D: $(systemctl status zeronet.service |grep Active)"
+echo ""
+
+echo "[INFO] Established connection to the Zeronet"
+read -n 1 -s -p "[INFO] Press any key to terminate connection!"
+echo ""
+echo ""
+
+echo "[INFO] Stoping Zeronet daemon ..."
+systemctl stop zeronet.service
+echo "[ OK ] Zeronet daemon stopped!"
+echo ""
+
+echo "[INFO] Stoping Tor proxy ..."
+systemctl stop tor.service
+echo "[ OK ] Tor proxy stopped!"
+echo ""
+
+echo "[INFO] Generate status report ..."
+echo ""
+echo "[STAT] Tor Proxy: $(systemctl status tor.service |grep Active)"
+echo "[STAT] Zeronet D: $(systemctl status zeronet.service |grep Active)"
+echo ""
+
+
+echo "ready."
