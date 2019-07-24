@@ -1,4 +1,11 @@
-#!/bin/bash
+#! /bin/bash
+
+#Init
+if [ "$EUID" != "0" ]; then
+    echo "[INFO] Please run as root"
+    exit
+fi
+
 clear
 echo "[INFO] Connecting to Zeronet ..."
 echo "[INFO] Start Tor proxy ..."
